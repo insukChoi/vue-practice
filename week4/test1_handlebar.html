@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Handlebar.js 예제</title>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <!--
+    https://github.com/wycats/handlebars.js#differences-between-handlebarsjs-and-mustache
+    -->
+</head>
+<body>
+<script id="handlebarTemplate" type="text/x-handlebars-template">
+    <table>
+        <thead>
+        <th>제품이름</th>
+        <th>가격</th>
+        <th>구매링크</th>
+        </thead>
+        <tbody>
+        {{#items}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{price}}</td>
+            <td><a href="{{url}}">{{url}}</a></td>
+        </tr>
+        {{/items}}
+        </tbody>
+    </table>
+</script>
+<script type="text/javascript">
+    //핸들바 템플릿을 가져온다.
+    var source = $("#handlebarTemplate").html();
+    //핸들바 템플릿을 pre컴파일한다.
+    var template = Handlebars.compile(source);
+    //핸들바 템플릿에 바인딩할 데이터
+    var data = {
+        items:[
+            {name: "Shoes" , price:"15000", url:"http://shopping.nate.com/#!top"},
+            {name: "Tshirt", price:"10000", url:"http://shopping.nate.com/#!top"},
+            {name: "Jeans" , price:"25000", url:"http://shopping.nate.com/#!top"}
+        ]
+    };
+    //핸들바 템플릿에 데이터를 바인딩해서 HTML을 생성한다.
+    var itemList = template(data);
+    //생성된 HTML을 뿌려준다.
+    $('body').append(itemList);
+</script>
+</body>
+</html>

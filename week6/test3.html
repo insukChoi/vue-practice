@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+     * 같은 객체에 충돌하는 키가 있을 경우,
+     * 컴포넌트의 옵션이 우선순위를 갖는다
+     */
+    var mixin = {
+        methods: {
+            foo: function () {
+                console.log('foo')
+            },
+            conflicting: function () {
+                console.log('from mixin')
+            }
+        }
+    }
+
+    var vm = new Vue({
+        mixins: [mixin],
+        methods: {
+            bar: function () {
+                console.log('bar')
+            },
+            conflicting: function () {
+                console.log('from self')
+            }
+        }
+    })
+
+    vm.foo() // => "foo"
+    vm.bar() // => "bar"
+    vm.conflicting() // => "from self"
+</script>
+</html>

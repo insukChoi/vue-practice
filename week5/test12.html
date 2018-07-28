@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <test-component id="N4111" :age="30"></test-component>
+</div>
+</body>
+<script>
+    Vue.component('test-component', {
+        props: {
+            id: {
+                type: String,
+                required: true
+            },
+            name: {
+                type: String,
+                default: 'noname'
+            },
+            age: {
+                type: Number,
+                validator: function (v) {
+                    return v >= 10;
+                }
+            }
+        },
+        template: '<p>name: {{name}}, age: {{age}}</p>'
+    });
+
+    new Vue({
+       el: '#app'
+    });
+</script>
+</html>

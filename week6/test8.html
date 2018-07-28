@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <anchored-heading v-bind:level="2">Hello world!</anchored-heading>
+</div>
+</body>
+<script>
+    Vue.component('anchored-heading',{
+        /** template 대신 render 함수 사용 */
+        render: function (createElement) {
+            console.log("this.$slots.default = " + this.$slots.default);
+            return createElement(
+                'h' + this.level,
+                this.$slots.default
+            )
+        },
+        props: {
+            level: {
+                type: Number,
+                required: true
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app'
+    })
+</script>
+</html>

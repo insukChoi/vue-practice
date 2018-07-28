@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <component v-bind:is="currentView"></component>
+</div>
+</body>
+<script>
+    var Home = {
+        template: '<p>Welcome Home!</p>'
+    }
+
+    var everland = {
+        template: '<p>Fantastic !!</p>'
+    }
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            currentView: Home
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-if="seen">이제 나를 볼 수 있어요</p>
+
+    <br><br>
+
+    <a v-bind:href="url">뉴스는 ?</a>
+
+    <br><br>
+
+    <button v-on:click="doSomething">click</button>
+</div>
+</body>
+<script language="JavaScript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            seen: true,
+            url: "http://news.nate.com"
+        },
+        methods:{
+            doSomething: function() {
+                alert(this.url);
+            }
+        }
+    })
+</script>
+
+</html>

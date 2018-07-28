@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="example">
+
+</div>
+</body>
+<script language="JavaScript">
+    var data = { a:1 }
+    var vm = new Vue({
+        el: '#example',
+        data: data,
+    })
+
+    // Vue 인스턴스는 데이터 속성 이외에도 유용한 인스턴스 속성 및 메소드를 제공
+    vm.$data === data // true
+    vm.$el === document.getElementById('example') // true
+
+    vm.$watch('a', function (newVal, oldVal) {
+         alert("기존 값: "+oldVal + "\n현재 값: "+newVal);
+     })
+</script>
+
+</html>

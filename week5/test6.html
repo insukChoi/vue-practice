@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id='app01' style="border : 1px solid red">
+        <component></component>
+        <localcomponent></localcomponent>
+    </div>
+
+    <br/>
+
+    <div id='app02' style="border : 1px solid blue">
+        <component></component>
+        <localcomponent></localcomponent>
+    </div>
+</body>
+<script>
+    // 전체적으로 적용될 전역 컴포넌트
+    Vue.component('component',{
+        template : '<div>전역 컴포넌트</div>'
+    });
+
+    var cmp = {
+        template : '<div>지역 컴포넌트</div>'
+    };
+
+    // Vue 생성(id=app01) 인 엘리먼트만!
+    var vm = new Vue({
+        el : '#app01',
+        components : {
+            'localcomponent' : cmp  // 지역컴포넌트 등록
+        }
+    });
+
+    // Vue 생성(id=app02) 인 엘리먼트만!
+    new Vue({
+        el : '#app02'
+    });
+</script>
+</html>

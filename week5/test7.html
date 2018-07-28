@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+   <table>
+       <my-row></my-row>
+       <!--<tr is="my-row"></tr>-->
+   </table>
+</div>
+</body>
+<script>
+    var templ = {
+        template : '<tr>gogoo</tr>'
+    };
+    new Vue({
+       el: '#app',
+       components: {
+           'my-row' : templ
+       }
+    });
+</script>
+</html>

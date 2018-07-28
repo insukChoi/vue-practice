@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="example">
+        <p>원본 메시지 : "{{ message }}"</p>
+        <p>뒤집힌 메시지 : "{{ reversedMessage() }}"</p>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el : "#example",
+        data:{
+            message:"I'm Happy Boy!"
+        },
+        computed:{
+            // 계산된 getter
+            reversedMessage: function () {
+                // 'this' 는 vm 인스턴스를 가리킵니다.
+                return this.message.split('').reverse().join('')
+            }
+        },
+        /*methods:{
+            reversedMessage: function () {
+                // 'this' 는 vm 인스턴스를 가리킵니다.
+                return this.message.split('').reverse().join('')
+            }
+        }*/
+
+    })
+</script>
+</html>

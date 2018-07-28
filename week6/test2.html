@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+     * 중첩 옵션이 포함되어 있는 경우!
+     * (적절한 전략으로 병합 된다.)
+     */
+    var mixin = {
+        created: function () {
+            console.log('mixin hook called\ngg');
+        }
+    }
+
+    new Vue({
+        mixins: [mixin],
+        created: function () {
+            console.log('component hook called');
+        }
+    })
+</script>
+</html>

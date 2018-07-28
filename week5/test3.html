@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input v-model.lazy="msg"><button onclick="vm.msgChange(this)">변해라!</button><br>
+    {{msg}}
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg : undefined
+            ,age : undefined
+        },
+        updated : function () {
+            console.log("[update] msg is " + this.msg /* this = Vue 인스턴스 */);
+        },
+        methods:{
+            msgChange : function (e) {
+                console.log("변해라 ~~");
+            }
+        }
+    });
+</script>
+</html>

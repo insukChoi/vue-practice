@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    // mixin 객체 생성
+    var myMixin = {
+        created: function () {
+            this.hello()
+        },
+        methods: {
+            hello: function () {
+                console.log("hello from mixin");
+            }
+        }
+    }
+
+    // mixin 을 사용할 컴포넌트 정의
+    var ComponentOne = Vue.extend({
+        mixins: [myMixin],
+        beforeCreate: function () {
+            console.log("Component 1번")
+        }
+    })
+
+    var ComponentTwo = Vue.extend({
+        mixins: [myMixin],
+        beforeCreate: function () {
+            console.log("Component 2번")
+        }
+    })
+
+    // 첫번째 컨트롤러
+    var component1 = new ComponentOne();
+
+    // 두번째 컨트롤러
+    var component2 = new ComponentTwo();
+
+</script>
+</html>

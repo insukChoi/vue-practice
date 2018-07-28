@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>{{result}}</div>
+</div>
+</body>
+<script>
+    Vue.config.optionMergeStrategies._my_option = function (parent, child, vm) {
+        return child + " 가 나오나?"
+    }
+
+
+    const Profile = Vue.extend({
+        _my_option : 1
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            result: Profile.options._my_option
+        }
+    })
+
+</script>
+</html>

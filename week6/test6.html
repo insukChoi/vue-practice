@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input v-focus>
+</div>
+</body>
+<script>
+    // 전역 사용자 정의 디렉티브 v-focus 등록
+    Vue.directive('focus', {
+        // 바인딩 된 엘리먼트가 DOM 에 삽입되었을 떄...
+        inserted: function (el) {
+            console.log("inserted (바인딩 된 엘리머트가 부모노드에 삽입)")
+            // 엘리먼트에 포커스를 줍니다.
+            el.focus()
+        },
+        bind: function () {
+            console.log("bind (디렉티브가 처음 엘리먼트에 바인딩 될 때)")
+        }
+    })
+
+    var vm = new Vue({
+        el: '#app'
+    })
+</script>
+</html>

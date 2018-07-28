@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-bind:class="[isActive ? activeClass : '', errorClass]">배열 구문 !!</div>
+    <!--<div v-bind:class="[{active: isActive}, errorClass]">배열 구문 !!</div>-->
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            isActive: true,
+            activeClass : 'active',
+            errorClass  : 'text-danger'
+        }
+    })
+</script>
+<style type="text/css">
+    .active {text-decoration: underline;}
+    .text-danger {color: red; }
+</style>
+</html>

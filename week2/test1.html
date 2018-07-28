@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>insuk {{b}}</h2>
+    </div>
+</body>
+<script language="JavaScript">
+    var data = { a : 1 };
+
+    var vm = new Vue({
+        el: '#app',
+        data : data
+    });
+
+    console.log("같은 객체를 참조 ? " + (vm.a === data.a));
+
+    vm.a = 2;
+    console.log(data.a);
+
+    vm.b = 'hi';
+</script>
+
+</html>

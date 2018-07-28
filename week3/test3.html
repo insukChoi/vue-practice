@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-bind:class="{active: isActive}">Active ? </div>
+    <br>
+    <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">TEST '-' </div>
+</div>
+<br>
+--------------------------------------------------------------------
+<br>
+<div id="app2">
+   <div v-bind:class="classObject">Class Object Text</div>
+</div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            isActive : true,
+            hasError : false
+        }
+    });
+
+    var vm2 = new Vue({
+        el: '#app2',
+        data: {
+            isActive: true,
+            error: null
+        },
+        computed: {
+            classObject: function(){
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type==='fatal' /* vm2.error = {type:'fatal'} */
+                }
+            }
+        }
+    });
+</script>
+<style type="text/css">
+    .active {color: aqua;}
+    .text-danger {color: red; size: 10px;}
+</style>
+</html>

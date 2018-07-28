@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+test4 => {{a}}
+</div>
+</body>
+<script language="JavaScript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            a:1
+        },
+        beforeCreate : function(){
+            console.log(" ==== START ==== ")
+        },
+        created : function () {
+            console.log("[create] a is " + this.a /* this = Vue 인스턴스 */);
+        },
+        mounted : function () {
+            console.log("[mounte] a is " + this.a /* this = Vue 인스턴스 */);
+        },
+        updated : function () {
+            console.log("[update] a is " + this.a /* this = Vue 인스턴스 */);
+        },
+        destroyed : function () {
+            console.log("[destroy]");
+            console.log(" ==== END ==== ")
+        }
+    })
+</script>
+
+</html>

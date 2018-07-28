@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    //  Vue 전역 Mixin
+    Vue.mixin({
+        created: function () {
+            var myName = this.$options.myName;
+            if(myName){
+                console.log(myName + " mixin @.@");
+            }
+        }
+    })
+
+    new Vue({
+        myName: 'insuk'
+    })
+
+    new Vue({
+        myName: 'Vue'
+    })
+</script>
+</html>

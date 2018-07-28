@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<!-- 범위를 가지는 슬롯
+    scoped slot 의 목적은 기존의 slot 처럼 부모 컴포넌트의 template에 있는 일부 view를 자식에게 전달하지만,
+    추가적으로 자식 컴포넌트에서 제공하는 값을 사용해서 랜더링 되도록 하는 것.
+-->
+<body>
+<div id="app">
+    <parent-comp></parent-comp>
+</div>
+</body>
+<script>
+    // 부모 컴포넌트
+    Vue.component('parent-comp', {
+        name: 'parent-comp',
+        template: '<div><child-comp><template scope="childData"><p>{{ childData.msg }}</p></template></child-comp></div>'
+    })
+
+    // 자식 컴포넌트
+    Vue.component('child-comp',{
+        name: 'child-comp',
+        template: '<div><slot :msg="myMessage"></slot></div>',
+        data: function () {
+            return{
+                myMessage: 'Hello World!'
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app'
+    })
+</script>
+</html>
